@@ -1,0 +1,61 @@
+{% extends 'base/base.html'%}
+{% load static %}
+  {% block content_header %}
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Cadastro de Cargo </h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'pri' %}">Home</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'cad' %}">Funcionário</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'car' %}">Cargo</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'manu' %}">Manutenção</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'motor' %}">Motor</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock%}
+  {% block content %}
+    <!--  Trocar -->
+    <form method="POST" action="{% url 'car' %}">
+      {% csrf_token %}
+      <div class="container-fluid">
+          {{ mensagem }}
+        <div class="row justify-content-md-center">
+          <div class="col-md-6">
+                <div class="callout callout-success">
+                   <!-- Colocar o site-->
+
+
+          <br>
+          <label> Cargo </label>
+          <div class="input-group mb-2" >
+          <span class="input-group-text" ><i class="fas fa-tools"></i></span>
+          <input type="text" class="form-control" placeholder="Ex: Técnico em Informática"  name="descricao"  required>
+          </div>
+
+          <br>
+          <label> Valor por hora</label>
+          <div class="input-group mb-2" >
+          <span class="input-group-text" ><i class="fas fa-stopwatch"></i></span>
+          <input type="number" class="form-control" placeholder="Ex: R$ 20 "  name="valor_horac"  required>
+          </div>
+          <br>
+
+               <center>
+                <input type="submit" class="btn btn-outline-success " value="salvar">
+                <input type="submit" class="btn btn-outline-danger" value="Limpar">
+              </center>
+
+                </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  {% endblock content %}

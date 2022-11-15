@@ -1,0 +1,87 @@
+{% load static %}
+{% load adminlte_helpers %}
+<style>
+
+</style>
+<aside class="main-sidebar sidebar-dark-primary sidebar-black elevation-4">
+    <a href="/" class="brand-link">
+     <center>
+          <img src="{% static 'images/logo100.png' %}"  width="68px" height="70px">
+     </center>
+    </a>
+    <div class="sidebar">
+        <div class="image">
+          <img src="{% static 'images/avatar5.png' %}" class="img-circle elevation-2" alt="User Image"
+          width="50px" height="50px">
+            <a href="#">Styven Cesar Noronha</a>
+        </div>
+
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header"><center>Menu Principal</center></li>
+                <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-clipboard"></i>
+                                <p>
+                                    CADASTROS
+                                <i class="right fas fa-angle-left"></i>
+                              </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="{% url 'cad' %}" class="nav-link">
+                                        <i class="fas fa-user"></i>
+                                        <p>Funcionário</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'car' %}" class="nav-link">
+                                        <i class="fas fa-hard-hat"></i>
+                                        <p>Cargo</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'manu' %}" class="nav-link">
+                                       <i class="fas fa-tools"></i>
+                                        <p>Manutenção</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{% url 'motor' %}" class="nav-link">
+                                       <i class="fas fa-industry"></i>
+                                        <p>Motor</p>
+                                    </a>
+                                </li>
+                            </ul>
+                </li>
+                <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-users-cog"></i>
+                                <p>
+                                    ADMINISTRAÇÃO
+                              </p>
+                              <i class="right fas fa-angle-left"></i>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="{% url 'lista' %}" class="nav-link">
+                                        <i class="fas fa-user"></i>
+                                        <p>Funcionários</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                        <li class="nav-item">
+                                            <a href="{% url 'listmanu' %}" class="nav-link">
+                                                <i class="fas fa-user"></i>
+                                                <p>Manutenção</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

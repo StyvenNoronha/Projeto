@@ -1,0 +1,108 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+  {% block content_header %}
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Manutenção</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'pri' %}">Home</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'cad' %}">Funcionário</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'car' %}">Cargo</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'manu' %}">Manutenção</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'motor' %}">Motor</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'listmanu' %}">Matutenção</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock%}
+  {% block content %}
+    <!--  Trocar -->
+    <form method="POST" action="{% url 'manu' %}">
+      {% csrf_token %}
+      <div class="container-fluid">
+          {{ mensagem }}
+        <div class="row justify-content-md-center">
+          <div class="col-md-6">
+                <div class="callout callout-success">
+                   <!-- Colocar o site-->
+
+         <label> Nome do Funcionário </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="far fa-user"></i></span>
+          <select name="fk_codEletrista" class="form-control">
+          <option value="0">Ex: walt Disney </option>
+          {% for n in nome%}
+          <option value="{{n.id}}">{{n.nome}}</option>
+          {% endfor %}
+         </select>
+         </div>
+
+
+        <label> Nome Modelo </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="fas fa-cog"></i></span>
+          <select name="fk_codMotor" class="form-control">
+          <option value="0">Ex: a123 </option>
+          {% for m in modelo%}
+          <option value="{{m.id}}">{{m.modelo}}</option>
+          {% endfor %}
+         </select>
+         </div>
+
+
+         <label> Data </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="fas fa-calendar-alt"></i></span>
+         <input type="date" class="form-control" placeholder="Ex: A10"  name="data"  required>
+         </div>
+
+
+         <label> Hora </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="fas fa-clock"></i></span>
+         <input type="time" class="form-control" placeholder="Ex: 400"  name="hora"  required>
+         </div>
+
+
+         <label> Descrição do problema  </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="far fa-times-circle"></i></span>
+         <textarea maxlength="1000" name="desc_Pro" cols="75" rows="3"></textarea>
+         </div>
+
+
+         <label> Descrição do solução </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="far fa-check-circle"></i></span>
+         <textarea maxlength="1000" name="desc_Solu" cols="75" rows="3"></textarea>
+         </div>
+
+
+         <label> Valor do serviço </label>
+         <div class="input-group mb-2" >
+         <span class="input-group-text" ><i class="far fa-money-bill-alt"></i></span>
+         <input type="number" class="form-control" placeholder="Ex:1000"  name="valor_servico"  required>
+         </div>
+
+
+         <br>
+
+       <center>
+       <input type="submit" class="btn btn-outline-success " value="salvar">
+       <input type="submit" class="btn btn-outline-danger" value="Limpar">
+       </center>
+
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </form>
+  {% endblock content %}

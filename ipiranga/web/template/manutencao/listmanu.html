@@ -1,0 +1,63 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+  {% block content_header %}
+<div class="content-header" xmlns="http://www.w3.org/1999/html">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Lista de manutenção</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'pri' %}">Home</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'cad' %}">Funcionário</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'car' %}">Cargo</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'manu' %}">Manutenção</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'motor' %}">Motor</a></li>
+               <li class="breadcrumb-item active"><a href="{% url 'listmanu' %}">Matutenção</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock%}
+  {% block content %}
+
+        <div class="row justify-content-md-center">
+          <div class="col-sm-9">
+                <div class="callout callout-success">
+                   <!-- Colocar o site-->
+                  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nome do Funci</th>
+      <th scope="col">Motor</th>
+      <th scope="col">Data</th>
+      <th scope="col">Hora</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Descrição v</th>
+      <th scope="col">Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for m in manu%}
+    <tr>
+      <th scope="row">{{m.fk_codEletrista}}</th>
+      <td>{{m.fk_codMotor}}</td>
+      <td>{{m.data}}</td>
+      <td>{{m.hora}}</td>
+      <td>{{m.desc_Pro}}</td>
+      <td>{{m.desc_Solu}}</td>
+      <td>{{m.valor_servico}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+          </div>
+          </div>
+        </div>
+      </div>
+
+  {% endblock content %}

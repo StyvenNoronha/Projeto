@@ -1,0 +1,40 @@
+
+{% extends 'base/base.html'%}
+{% load static %}
+
+  {% block content_header %}
+  {% endblock%}
+  {% block content %}
+
+        <div class="row justify-content-md-center">
+          <div class="col-sm-9">
+                <div class="callout callout-success">
+                   <!-- Colocar o site-->
+                  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Cidade</th>
+      <th scope="col">Função</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for n in name%}
+    <tr>
+      <th scope="row">{{n.nome}}</th>
+      <td>{{n.celular}}</td>
+      <td>{{n.cidade}}</td>
+      <td>{{n.funcao}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+          </div>
+          </div>
+        </div>
+      </div>
+
+  {% endblock content %}

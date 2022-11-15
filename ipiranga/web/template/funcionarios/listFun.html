@@ -1,0 +1,73 @@
+{% extends 'base/base.html'%}
+{% load static %}
+
+  {% block content_header %}
+<div class="content-header" xmlns="http://www.w3.org/1999/html">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Lista de funcionários</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{% url 'pri' %}">Home</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'cad' %}">Funcionário</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'car' %}">Cargo</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'manu' %}">Manutenção</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'motor' %}">Motor</a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'listmanu' %}">Matutenção</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock%}
+  {% block content %}
+    <!--  Trocar -->
+
+    <form method="POST" action="{% url 'lista' %}">
+      {% csrf_token %}
+      <div class="container-fluid ">
+          {{ mensagem }}
+        <div class="row justify-content-md-center">
+          <div class="col-sm-9">
+                <div class="callout callout-success">
+                   <!-- Colocar o site-->
+
+                    <table class="table table-hover">
+                     <thead class="thead-light">
+
+
+                       <tr>
+                         <th scope="col">Nome</th>
+                         <th scope="col">Celular</th>
+                         <th scope="col">Cidade</th>
+                         <th scope="col">Função</th>
+                          <th scope="col">Ação</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                      {% for n in name %}
+                       <tr>
+                         <td id="nomeF">{{n.nome}}</td>
+                         <td id="celularF">{{n.celular}}</td>
+                          <td>{{n.cidade}}</td>
+                          <td>{{n.funcao}}</td>
+                          <td><a href="{% url 'lista' n.id %}" class="btn btn-outline-danger" data-toggle="tooltip" title="Excluir"><i class="fas fa-ban"></i></a>
+                          </td>
+
+                         </td>
+                       </tr>
+                       <tr>
+                       {% endfor %}
+                      </tbody>
+                    </table>
+                    <a href="{% url 'pdf'%}" class="btn btn-outline-info" data-toggle="tooltip" title="download PDF"><i class="fas fa-download"></i></a>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  {% endblock content %}
